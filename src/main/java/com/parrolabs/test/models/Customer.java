@@ -19,8 +19,13 @@ public class Customer {
     @Column(unique = true, nullable = false)
 	private Long id;
 	
+	@Column(unique = true, nullable = false)
 	private String name;
+	
+	@Column(unique = false, nullable = false)
 	private String phone;
+	
+	@Column(unique = true, nullable = false)
 	private String email;
 	
 	@OneToOne(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)

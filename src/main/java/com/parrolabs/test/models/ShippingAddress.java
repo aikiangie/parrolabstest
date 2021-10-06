@@ -19,10 +19,19 @@ public class ShippingAddress {
     @Column(unique = true, nullable = false)
 	private Long id;
 	
+	@Column(unique = false, nullable = false)
 	private String streetAndNumber;
+	
+	@Column(unique = false, nullable = false)
 	private String city;
+	
+	@Column(unique = false, nullable = false)
 	private String state;
+	
+	@Column(unique = false, nullable = false)
 	private String zipCode;
+	
+	@Column(unique = false, nullable = false)
 	private String country;
 	
 	@JoinColumn(name = "customer_id")
