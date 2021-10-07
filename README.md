@@ -9,13 +9,13 @@ The architecture layer will be built to support a simple order management system
 3. Search customers, products, and orders 
 4. Search order details 
 
-**Information required for each entity: **
+**Information required for each entity**
 1. Customer (Name, phone, email, primary shipping address) 
 2. Shipping address (Street and number, city, state, zip code, country) 
 3. Product (ID, description, price, weight) 
 4. Order: Order Number, date, customer, shipping address, payment type (cash, credit card,  check, other), list of products with quantities, total order value 
 
-**Business Logic: **
+**Business Logic**
 1. Customer’s phone and email must be unique 
 2. Product ID must be unique 
 3. Order number must be unique 
@@ -23,7 +23,7 @@ The architecture layer will be built to support a simple order management system
 6. A product cannot be deleted after it has been used in an order 
 7. A customer cannot be deleted after it has been used in an order 
 
-**Architectural Requirements: **
+**Architectural Requirements**
 1. Database: Mysql 
 2. Back-end: Java SE 1.8 
 3. Front-end: No front end required 
@@ -33,10 +33,10 @@ The architecture layer will be built to support a simple order management system
 
 
 **How to test**
-
 1) Use swagger: http://localhost:8080/swagger-ui.html
 2) Use postman collection located in src/test/PostmanParrolabsTest.postman_collection.json
 
 **Pendings**
-1) Payment type validations
+1) Payment type validations (enumeration)
 2) Unit tests
+3) Add search criterias. Find only available by id
