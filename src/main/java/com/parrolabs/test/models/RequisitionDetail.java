@@ -24,6 +24,40 @@ public class RequisitionDetail implements Serializable{
 	
 	@Column(unique = false, nullable = false)
 	private Float total;
+
+	public Long getRequisitionId() {
+		return requisitionId;
+	}
+
+	public void setRequisitionId(Long requisitionId) {
+		this.requisitionId = requisitionId;
+	}
+
+	public Long getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Long productId) {
+		this.productId = productId;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+
+	public Float getTotal() {
+		return total;
+	}
+
+	public void setTotal(Float total) {
+		this.total = total;
+	}
+	
+	
 	
 	
 }	

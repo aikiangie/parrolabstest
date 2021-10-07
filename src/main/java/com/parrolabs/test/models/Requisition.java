@@ -1,7 +1,9 @@
 package com.parrolabs.test.models;
 
 import java.sql.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -41,6 +44,10 @@ public class Requisition {
 	
 	@Column(unique = false, nullable = false)
 	private Float totalOrderValue;
+	
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "university_id")
+    private List<RequisitionDetail> products;
 	
 	public Long getId() {
 		return id;
