@@ -1,5 +1,6 @@
 package com.parrolabs.test.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "requisition_detail")
@@ -18,7 +21,8 @@ public class RequisitionDetail{
 	@Column(unique = true, nullable = false)
 	private Long id;
 
-	@ManyToOne()
+	@JsonIgnore
+	@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "requisition_id")
 	private Requisition requisition;
 

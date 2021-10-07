@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.parrolabs.test.dto.InboundCustomer;
 import com.parrolabs.test.models.Customer;
 import com.parrolabs.test.services.CustomerService;
 
@@ -26,8 +27,8 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/create")
-	public Long createCustomer(@RequestBody Customer customer){
-		return service.createCustomer(customer);
+	public Customer createCustomer(@RequestBody InboundCustomer inboundCustomer){
+		return service.createCustomer(inboundCustomer);
 	}
 	
 	@GetMapping("/find/{id}")

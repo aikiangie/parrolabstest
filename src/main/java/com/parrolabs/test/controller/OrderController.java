@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.parrolabs.test.dto.InboundOrder;
 import com.parrolabs.test.models.Requisition;
 import com.parrolabs.test.services.RequisitionService;
 
@@ -26,8 +27,8 @@ public class OrderController {
 	}
 	
 	@PostMapping("/create")
-	public Long createRequisition(@RequestBody Requisition requisition){
-		return service.createRequisition(requisition);
+	public Requisition createRequisition(@RequestBody InboundOrder inboundOrder){
+		return service.createRequisition(inboundOrder);
 	}
 	
 	@GetMapping("/find/{id}")
