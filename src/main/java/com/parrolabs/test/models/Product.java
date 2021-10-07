@@ -16,8 +16,13 @@ public class Product {
     @Column(unique = true, nullable = false)
 	private Long id;
 	
+	@Column(unique = false, nullable = false)
 	private String description;
+	
+	@Column(unique = false, nullable = false)
 	private Float price;
+	
+	@Column(unique = false, nullable = false)
 	private Float weight;
 	
 	public Long getId() {
