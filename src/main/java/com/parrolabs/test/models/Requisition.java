@@ -1,16 +1,17 @@
 package com.parrolabs.test.models;
 
 import java.sql.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -32,7 +33,7 @@ public class Requisition {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne()
 	@JoinColumn(name = "shipping_address_id")
 	private ShippingAddress shippingAddress;
 	
@@ -43,11 +44,8 @@ public class Requisition {
 	@Column(unique = false, nullable = false)
 	private Float totalOrderValue;
 	
-	/*
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "id")
-    private List<RequisitionDetail> requisitionDetail;
-    */
+	@OneToMany(mappedBy = "requisition", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<RequisitionDetail> requisitionDetail;
 	
 	public Long getId() {
 		return id;
@@ -104,7 +102,13 @@ public class Requisition {
 	public void setShippingAddress(ShippingAddress shippingAddress) {
 		this.shippingAddress = shippingAddress;
 	}
-	
-	
+
+	public List<RequisitionDetail> getRequisitionDetail() {
+		return requisitionDetail;
+	}
+
+	public void setRequisitionDetail(List<RequisitionDetail> requisitionDetail) {
+		this.requisitionDetail = requisitionDetail;
+	}
 	
 }

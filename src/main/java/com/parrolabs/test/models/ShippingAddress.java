@@ -1,11 +1,13 @@
 package com.parrolabs.test.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -34,8 +36,12 @@ public class ShippingAddress {
 	@Column(unique = false, nullable = false)
 	private String country;
 
+	@Column(name = "isprimary", unique = false, nullable = false)
+	private Boolean primary;
+
 	@JsonIgnore
-	@OneToOne(mappedBy = "primaryShippingAddress")
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "customer_id")
 	private Customer customer;
 
 	public Long getId() {
@@ -92,6 +98,14 @@ public class ShippingAddress {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+
+	public Boolean getPrimary() {
+		return primary;
+	}
+
+	public void setPrimary(Boolean primary) {
+		this.primary = primary;
 	}
 
 }

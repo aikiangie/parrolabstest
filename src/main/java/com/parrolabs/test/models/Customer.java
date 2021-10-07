@@ -1,13 +1,14 @@
 package com.parrolabs.test.models;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -28,10 +29,8 @@ public class Customer {
 	@Column(unique = true, nullable = false)
 	private String email;
 
-	@JoinColumn(name = "primary_shipping_address_id", referencedColumnName = "id")
-	@OneToOne(cascade = CascadeType.ALL)
-	private ShippingAddress primaryShippingAddress;
-	
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<ShippingAddress> shippingAddress;
 
 	public Long getId() {
 		return id;
@@ -65,12 +64,12 @@ public class Customer {
 		this.email = email;
 	}
 
-	public ShippingAddress getPrimaryShippingAddress() {
-		return primaryShippingAddress;
+	public List<ShippingAddress> getShippingAddress() {
+		return shippingAddress;
 	}
 
-	public void setPrimaryShippingAddress(ShippingAddress primaryShippingAddress) {
-		this.primaryShippingAddress = primaryShippingAddress;
+	public void setShippingAddress(List<ShippingAddress> shippingAddress) {
+		this.shippingAddress = shippingAddress;
 	}
 
 }

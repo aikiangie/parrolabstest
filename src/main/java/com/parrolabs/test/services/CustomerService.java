@@ -24,9 +24,6 @@ public class CustomerService {
 
 	public Long createCustomer(Customer customer) {
 
-		if (customer.getPrimaryShippingAddress() != null) {
-			shippingAddressRepository.save(customer.getPrimaryShippingAddress());
-		}
 
 		return customerRepository.save(customer).getId();
 	}
