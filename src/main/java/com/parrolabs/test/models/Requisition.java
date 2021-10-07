@@ -1,5 +1,7 @@
 package com.parrolabs.test.models;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,7 +24,8 @@ public class Requisition {
 	@Column(unique = false, nullable = false)
 	private String orderNumber;
 	
-	//private DateTime date;
+	@Column(unique = false, nullable = false)
+	private Date date;
 	
 	@JoinColumn(name = "customer_id")
     @OneToOne(fetch = FetchType.LAZY)
@@ -32,16 +35,13 @@ public class Requisition {
     @OneToOne(fetch = FetchType.LAZY)
 	private ShippingAddress shippingAddress;
 	
-	// (cash, credit card,  check, other)
-	
+	// TODO: add validation for type (cash, credit card,  check, other)
 	@Column(unique = false, nullable = false)
 	private String paymentType;
 	
-	//list of products 
-	
 	@Column(unique = false, nullable = false)
 	private Float totalOrderValue;
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -90,5 +90,11 @@ public class Requisition {
 		this.totalOrderValue = totalOrderValue;
 	} 
 	
-	
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
 }
