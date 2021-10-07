@@ -31,6 +31,9 @@ The architecture layer will be built to support a simple order management system
 5. Architecture style: Microservice SOA oriented architecture 
 6. Testing: Automated/Unit tests considered a big plus but not mandatory
 
+**Implementation**
+Framework: Spring boot 2.5.5
+Database: Mysql 8.0.26
 
 **How to test**
 1) Use swagger: http://localhost:8080/swagger-ui.html
