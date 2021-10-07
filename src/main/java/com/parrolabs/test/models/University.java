@@ -1,32 +1,26 @@
 package com.parrolabs.test.models;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "student")
-public class Student {
- 
-    @Id
+@Table(name = "university")
+public class University {
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
  
     private String name;
  
-    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private Tuition tuition;
-    
-    @ManyToOne()
-    @JoinColumn(name = "university_id")
-    private University university;
+    @OneToMany(mappedBy = "university", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Student> students;
 
 	public Long getId() {
 		return id;
@@ -44,13 +38,13 @@ public class Student {
 		this.name = name;
 	}
 
-	public Tuition getTuition() {
-		return tuition;
+	public List<Student> getStudents() {
+		return students;
 	}
 
-	public void setTuition(Tuition tuition) {
-		this.tuition = tuition;
+	public void setStudents(List<Student> students) {
+		this.students = students;
 	}
- 
+    
     
 }

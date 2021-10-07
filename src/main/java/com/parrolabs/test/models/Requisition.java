@@ -4,9 +4,13 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,13 +28,13 @@ public class Requisition {
 	@Column(unique = false, nullable = false)
 	private Date date;
 	
-	/*@JsonIgnore
-	@OneToOne(mappedBy = "requisition")
-	private Customer customer;
+	@ManyToOne()
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 	
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "shipping_address_id")
-    @OneToOne(fetch = FetchType.LAZY)
-	private ShippingAddress shippingAddress;*/
+	private ShippingAddress shippingAddress;
 	
 	// TODO: add validation for type (cash, credit card,  check, other)
 	@Column(unique = false, nullable = false)
@@ -53,13 +57,13 @@ public class Requisition {
 		this.id = id;
 	}
 	
-	/*public Customer getCustomer() {
+	public Customer getCustomer() {
 		return customer;
 	}
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
-	}*/
+	}
 
 	public String getOrderNumber() {
 		return orderNumber;
@@ -92,6 +96,15 @@ public class Requisition {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+
+	public ShippingAddress getShippingAddress() {
+		return shippingAddress;
+	}
+
+	public void setShippingAddress(ShippingAddress shippingAddress) {
+		this.shippingAddress = shippingAddress;
+	}
+	
 	
 	
 }

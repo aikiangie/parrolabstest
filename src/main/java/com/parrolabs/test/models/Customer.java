@@ -32,7 +32,6 @@ public class Customer {
 	@OneToOne(cascade = CascadeType.ALL)
 	private ShippingAddress primaryShippingAddress;
 	
-	
 
 	public Long getId() {
 		return id;
