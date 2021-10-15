@@ -49,7 +49,7 @@ public class RequisitionService {
 		
 		requisitionRepository.save(requisition);
 		
-		float total = 0;
+		Float total = 0f;
 
 		requisition.setRequisitionDetail(new ArrayList<RequisitionDetail>());
 
